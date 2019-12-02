@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class NativeStringFinder implements StringFinder{
+public class NativeStringFinder implements StringFinder {
 
     public int[] findString(String src, String pattern) {
         String srcString = Objects.requireNonNull(src, "src string cannot be null");
@@ -14,7 +14,7 @@ public class NativeStringFinder implements StringFinder{
         }
 
         List<Integer> res = new ArrayList();
-        for (int i = 0; i < srcString.length() - patternString.length(); i++) {
+        for (int i = 0; i <= srcString.length() - patternString.length(); i++) {
             for (int j = 0; j < patternString.length(); j++) {
                 if (patternString.charAt(j) != srcString.charAt(i + j)) {
                     break;
@@ -29,6 +29,6 @@ public class NativeStringFinder implements StringFinder{
 
     @Override
     public String timeComplexity() {
-        return "O(n^m)";
+        return "O((src.length() - pattern.length() + 1) * pattern.length())";
     }
 }

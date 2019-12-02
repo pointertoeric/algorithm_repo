@@ -16,6 +16,12 @@ public class NativeStringFinderTest {
     }
 
     @Test
+    public void TestSearchNormal2() {
+        int [] matches = stringFinder.findString("aaaa", "aa");
+        assertArrayEquals(new int[]{0, 1, 2}, matches);
+    }
+
+    @Test
     public void TestSearchEmpty() {
         int [] matches = stringFinder.findString("aaab", "");
         assertArrayEquals(new int[]{}, matches);
