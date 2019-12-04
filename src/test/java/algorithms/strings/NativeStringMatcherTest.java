@@ -5,31 +5,31 @@ import org.junit.Test;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 
-public class NativeStringFinderTest {
+public class NativeStringMatcherTest {
 
-    private NativeStringFinder stringFinder = new NativeStringFinder();
+    private NativeStringMatcher stringMatcher = new NativeStringMatcher();
 
     @Test
     public void TestSearchNormal1() {
-        int [] matches = stringFinder.findString("aaab", "aa");
+        int [] matches = stringMatcher.findMatch("aaab", "aa");
         assertArrayEquals(new int[]{0, 1}, matches);
     }
 
     @Test
     public void TestSearchNormal2() {
-        int [] matches = stringFinder.findString("aaaa", "aa");
+        int [] matches = stringMatcher.findMatch("aaaa", "aa");
         assertArrayEquals(new int[]{0, 1, 2}, matches);
     }
 
     @Test
     public void TestSearchEmpty() {
-        int [] matches = stringFinder.findString("aaab", "");
+        int [] matches = stringMatcher.findMatch("aaab", "");
         assertArrayEquals(new int[]{}, matches);
     }
 
     @Test
     public void TestPatternLongerThanSrc() {
-        int [] matches = stringFinder.findString("aaab", "aa111111");
+        int [] matches = stringMatcher.findMatch("aaab", "aa111111");
         assertArrayEquals(new int[]{}, matches);
     }
 }

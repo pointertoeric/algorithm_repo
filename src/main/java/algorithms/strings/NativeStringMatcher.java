@@ -4,9 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class NativeStringFinder implements StringFinder {
+/**
+ * Complexity O((src.length() - pattern.length() + 1) * pattern.length())
+ */
+public class NativeStringMatcher implements StringMatcher {
 
-    public int[] findString(String src, String pattern) {
+    public int[] findMatch(String src, String pattern) {
         String srcString = Objects.requireNonNull(src, "src string cannot be null");
         String patternString = Objects.requireNonNull(pattern, "patternString string cannot be null");
         if (srcString.length() < patternString.length()) {
@@ -25,10 +28,5 @@ public class NativeStringFinder implements StringFinder {
             }
         }
         return res.stream().mapToInt(Integer::intValue).toArray();
-    }
-
-    @Override
-    public String timeComplexity() {
-        return "O((src.length() - pattern.length() + 1) * pattern.length())";
     }
 }
